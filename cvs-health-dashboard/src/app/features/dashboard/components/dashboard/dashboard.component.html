@@ -1,0 +1,35 @@
+<div class="dashboard-page">
+  <!-- Page Header -->
+  <div class="page-header">
+    <h2 class="section-title">HEALTH METRICS OVERVIEW</h2>
+    <div class="header-actions">
+      <span class="sync-icon">🔄</span>
+    </div>
+  </div>
+
+  @if (loading()) {
+    <div class="loading">Loading dashboard...</div>
+  } @else {
+    <!-- KPI Cards -->
+    <div class="kpi-grid">
+      @for (kpi of kpis(); track kpi.id) {
+        <app-kpi-card [kpi]="kpi"></app-kpi-card>
+      }
+    </div>
+
+    <!-- Charts and Insights Row -->
+    <div class="charts-row">
+      <!-- Health Charts -->
+      <div class="charts-section">
+        <app-health-charts [patientId]="selectedPatientId()!"></app-health-charts>
+      </div>
+
+      <!-- Quick Insights -->
+      <div class="insights-section">
+        <app-quick-insights></app-quick-insights>
+      </div>
+    </div>
+  }
+</div>
+
+

@@ -1,0 +1,111 @@
+<div class="settings-page">
+  <div class="page-header">
+    <h2 class="section-title">APPLICATION SETTINGS</h2>
+  </div>
+
+  <div class="settings-container">
+    <!-- General Settings -->
+    <div class="settings-section">
+      <h3 class="settings-section-title">GENERAL SETTINGS</h3>
+      
+      <div class="setting-item">
+        <label class="setting-label">Email Notifications</label>
+        <label class="toggle-switch">
+          <input 
+            type="checkbox" 
+            [checked]="emailNotifications()"
+            (change)="emailNotifications.set($any($event.target).checked)"
+          />
+          <span class="toggle-slider"></span>
+        </label>
+      </div>
+
+      <div class="setting-item">
+        <label class="setting-label">Two-Factor Authentication</label>
+        <label class="toggle-switch">
+          <input 
+            type="checkbox" 
+            [checked]="twoFactorAuth()"
+            (change)="twoFactorAuth.set($any($event.target).checked)"
+          />
+          <span class="toggle-slider"></span>
+        </label>
+      </div>
+
+      <div class="setting-item">
+        <label class="setting-label">Default Reporting Period</label>
+        <input 
+          type="text" 
+          class="setting-input"
+          [value]="reportingPeriod()"
+          readonly
+        />
+      </div>
+
+      <div class="setting-item">
+        <button class="btn-change-password" (click)="changePassword()">Change Password</button>
+      </div>
+    </div>
+
+    <!-- Data & Privacy -->
+    <div class="settings-section">
+      <h3 class="settings-section-title">DATA & PRIVACY</h3>
+      
+      <div class="setting-item">
+        <label class="checkbox-label">
+          <input 
+            type="checkbox" 
+            [checked]="shareData()"
+            (change)="shareData.set($any($event.target).checked)"
+          />
+          <span>Share Anonymized Health Data</span>
+        </label>
+      </div>
+
+      <div class="setting-item">
+        <label class="checkbox-label">
+          <input 
+            type="checkbox" 
+            [checked]="gdprCompliance()"
+            (change)="gdprCompliance.set($any($event.target).checked)"
+          />
+          <span>GDPR Compliance</span>
+        </label>
+      </div>
+    </div>
+
+    <!-- Preferences -->
+    <div class="settings-section">
+      <h3 class="settings-section-title">PREFERENCES</h3>
+      
+      <div class="setting-item">
+        <label class="setting-label">Theme</label>
+        <label class="toggle-switch">
+          <input 
+            type="checkbox" 
+            [checked]="darkMode()"
+            (change)="darkMode.set($any($event.target).checked)"
+          />
+          <span class="toggle-slider"></span>
+          <span class="toggle-label">Dark Mode</span>
+        </label>
+      </div>
+
+      <div class="setting-item">
+        <label class="setting-label">Language</label>
+        <select class="setting-select">
+          <option>English</option>
+          <option>Spanish</option>
+          <option>French</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Action Buttons -->
+    <div class="settings-actions">
+      <button class="btn-primary" (click)="saveChanges()">SAVE CHANGES</button>
+      <button class="btn-secondary" (click)="cancel()">CANCEL</button>
+    </div>
+  </div>
+</div>
+

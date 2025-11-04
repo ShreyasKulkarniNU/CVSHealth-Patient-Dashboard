@@ -1,0 +1,171 @@
+.health-charts-container {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.chart-card {
+  background: white;
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.chart-header {
+  margin-bottom: 20px;
+}
+
+.chart-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.chart-loading {
+  text-align: center;
+  padding: 40px;
+  color: #666;
+}
+
+.chart-content {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.chart-area {
+  width: 100%;
+  min-height: 200px;
+  background: #f9f9f9;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.chart-legend {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  color: #666;
+}
+
+.legend-color {
+  width: 16px;
+  height: 16px;
+  border-radius: 4px;
+}
+
+.parameters-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.parameter-item {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.parameter-label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #666;
+  min-width: 100px;
+}
+
+.parameter-bar {
+  flex: 1;
+  height: 24px;
+  background: #e0e0e0;
+  border-radius: 12px;
+  overflow: hidden;
+  position: relative;
+}
+
+.parameter-fill {
+  height: 100%;
+  transition: width 0.3s ease;
+  border-radius: 12px;
+}
+
+.parameter-value {
+  font-size: 16px;
+  font-weight: 600;
+  color: #1a1a1a;
+  min-width: 60px;
+  text-align: right;
+}
+
+.readings-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.reading-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 12px;
+  background: #f9f9f9;
+  border-radius: 8px;
+}
+
+.reading-label {
+  font-size: 14px;
+  color: #666;
+  font-weight: 500;
+}
+
+.reading-value {
+  font-size: 14px;
+  font-weight: 700;
+  color: #1a1a1a;
+}
+
+.api-status {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.status-indicator {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.status-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  
+  &.online {
+    background: var(--status-normal);
+    box-shadow: 0 0 8px rgba(76, 175, 80, 0.5);
+  }
+}
+
+.status-text {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--status-normal);
+}
+
+.status-update {
+  font-size: 14px;
+  color: #666;
+  margin-left: 24px;
+}
+

@@ -1,0 +1,25 @@
+<div class="reports-page">
+  <div class="page-header">
+    <h2 class="section-title">GENERATED REPORTS</h2>
+    <div class="header-actions">
+      <button class="btn-generate" (click)="generateNewReport()">GENERATE NEW REPORT</button>
+    </div>
+  </div>
+
+  <!-- Report List -->
+  <div class="reports-container">
+    @for (report of reports; track report.id) {
+      <div class="report-card">
+        <div class="report-icon">📄</div>
+        <div class="report-content">
+          <h3 class="report-title">{{ report.title }}</h3>
+          <p class="report-date">Generated on: {{ report.generatedDate | date:'MMM d, yyyy' }}</p>
+          <span class="report-status" [class.completed]="report.status === 'completed'">
+            Status: {{ report.status | titlecase }}
+          </span>
+        </div>
+      </div>
+    }
+  </div>
+</div>
+

@@ -38,7 +38,8 @@ jobs:
       
       - name: Build
         working-directory: ./cvs-health-dashboard
-        run: npm run build -- --configuration production --base-href /CVSHealth-Patient-Dashboard/
+        run: npm run build -- --configuration production --base-href=/CVSHealth-Patient-Dashboard/ 
+        # Note the '=' sign being used to explicitly set the value.
       
       - name: Setup Pages
         uses: actions/configure-pages@v4

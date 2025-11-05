@@ -1,4 +1,10 @@
 # CVS Health Patient Monitoring Dashboard
+<img width="1915" height="967" alt="image" src="https://github.com/user-attachments/assets/d331b54e-17ef-4d9e-9d62-d1097139616b" />
+<img width="1913" height="970" alt="image" src="https://github.com/user-attachments/assets/1d6da592-a2a7-4693-b90a-1f0089e23c53" />
+<img width="1918" height="967" alt="image" src="https://github.com/user-attachments/assets/d7d0651d-da6a-4147-b33b-d7da2070ba14" />
+<img width="1918" height="972" alt="image" src="https://github.com/user-attachments/assets/af4e18e8-e9f1-4dea-9122-7102be893e0e" />
+
+
 
 ## 🎉 Welcome!
 

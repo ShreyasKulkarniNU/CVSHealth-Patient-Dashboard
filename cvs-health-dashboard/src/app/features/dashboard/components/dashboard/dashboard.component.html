@@ -1,14 +1,9 @@
 <div class="dashboard-page">
-  <!-- Page Header -->
-  <div class="page-header">
-    <h2 class="section-title">HEALTH METRICS OVERVIEW</h2>
-    <div class="header-actions">
-      <span class="sync-icon">🔄</span>
-    </div>
-  </div>
-
   @if (loading()) {
-    <div class="loading">Loading dashboard...</div>
+    <div class="loading">
+      <div class="loading-spinner"></div>
+      <p>Loading dashboard...</p>
+    </div>
   } @else {
     <!-- KPI Cards -->
     <div class="kpi-grid">

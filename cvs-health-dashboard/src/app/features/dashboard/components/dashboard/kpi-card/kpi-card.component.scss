@@ -1,13 +1,25 @@
 .kpi-card {
   background: white;
   border-radius: 12px;
-  padding: 24px;
+  padding: 16px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
   transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
   
   &:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+  }
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--card-gradient-start), var(--card-gradient-end));
   }
 }
 
@@ -15,66 +27,37 @@
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  margin-bottom: 20px;
+  margin-bottom: 12px;
 }
 
 .kpi-name {
-  font-size: 14px;
+  font-size: 10px;
   font-weight: 700;
-  color: #1a1a1a;
+  color: #8898aa;
   margin: 0;
   text-transform: uppercase;
   letter-spacing: 0.5px;
 }
 
-.status-icon {
-  font-size: 20px;
+.kpi-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.icon-symbol {
+  font-size: 18px;
+  color: white;
 }
 
 .kpi-content {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: 20px;
-}
-
-.gauge-container {
-  position: relative;
-  width: 100%;
-  height: 100px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.gauge {
-  width: 100%;
-  height: 100%;
-}
-
-.progress-arc {
-  transition: stroke 0.3s ease;
-}
-
-.gauge-value {
-  position: absolute;
-  top: 60%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
-.value {
-  font-size: 32px;
-  font-weight: 700;
-  color: #1a1a1a;
-}
-
-.kpi-details {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 8px;
-  width: 100%;
+  gap: 10px;
 }
 
 .main-value {
@@ -84,41 +67,47 @@
 }
 
 .value-number {
-  font-size: 28px;
+  font-size: 24px;
   font-weight: 700;
   color: #1a1a1a;
+  line-height: 1;
 }
 
 .value-unit {
-  font-size: 14px;
-  color: #666;
+  font-size: 13px;
+  color: #8898aa;
+  font-weight: 500;
 }
 
 .trend-info {
   display: flex;
   align-items: center;
-  gap: 8px;
-  font-size: 14px;
-}
-
-.trend-direction {
-  font-size: 16px;
-}
-
-.trend-text {
-  color: #666;
-}
-
-.kpi-footer {
-  margin-top: 16px;
-  padding-top: 16px;
-  border-top: 1px solid #e0e0e0;
-  text-align: center;
-}
-
-.last-updated {
+  gap: 6px;
   font-size: 12px;
-  color: #999;
+  font-weight: 600;
+  
+  &.trend-up {
+    color: #4CAF50;
+  }
+  
+  &.trend-down {
+    color: #F44336;
+  }
+}
+
+.trend-icon {
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+}
+
+.trend-percentage {
+  font-weight: 700;
+}
+
+.trend-period {
+  color: #8898aa;
+  font-weight: 400;
 }
 
 

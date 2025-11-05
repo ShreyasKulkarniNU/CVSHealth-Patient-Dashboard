@@ -57,14 +57,32 @@ export class KpiCardComponent implements OnChanges {
     }
   }
 
-  get trendIcon(): string {
-    if (this.kpi.trend.direction === 'up') return '📈';
-    if (this.kpi.trend.direction === 'down') return '📉';
-    return '➡️';
+  getTrendIcon(): string {
+    if (this.kpi.trend.direction === 'up') return '↑';
+    if (this.kpi.trend.direction === 'down') return '↓';
+    return '→';
   }
 
-  get trendText(): string {
-    return `${this.kpi.trend.percentage}% ${this.kpi.trend.period}`;
+  getIconSymbol(): string {
+    const iconMap: { [key: string]: string } = {
+      'Bone Mineral Density': '🦴',
+      'Hemoglobin': '🩸',
+      'Blood Glucose': '💉',
+      'Vitamin D': '☀️',
+      'Calcium': '💊'
+    };
+    return iconMap[this.kpi.name] || '📊';
+  }
+
+  getIconBackground(): string {
+    const colorMap: { [key: string]: string } = {
+      'Bone Mineral Density': 'linear-gradient(135deg, #F44336 0%, #FF6B6B 100%)',
+      'Hemoglobin': 'linear-gradient(135deg, #FF9800 0%, #FFB74D 100%)',
+      'Blood Glucose': 'linear-gradient(135deg, #FFC107 0%, #FFD54F 100%)',
+      'Vitamin D': 'linear-gradient(135deg, #00A0DD 0%, #4FC3F7 100%)',
+      'Calcium': 'linear-gradient(135deg, #4CAF50 0%, #81C784 100%)'
+    };
+    return colorMap[this.kpi.name] || 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)';
   }
 }
 

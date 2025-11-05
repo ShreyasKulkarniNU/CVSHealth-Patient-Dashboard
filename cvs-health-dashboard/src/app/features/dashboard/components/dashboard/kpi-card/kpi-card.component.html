@@ -1,57 +1,23 @@
 <div class="kpi-card">
   <div class="kpi-header">
     <h3 class="kpi-name">{{ kpi.name }}</h3>
-    <span class="status-icon">{{ getStatusIcon() }}</span>
+    <div class="kpi-icon" [style.background]="getIconBackground()">
+      <span class="icon-symbol">{{ getIconSymbol() }}</span>
+    </div>
   </div>
   
   <div class="kpi-content">
-    <div class="gauge-container">
-      <svg class="gauge" viewBox="0 0 160 120">
-        <!-- Background arc -->
-        <path
-          d="M 20 100 A 60 60 0 0 1 140 100"
-          fill="none"
-          stroke="#e0e0e0"
-          stroke-width="12"
-          stroke-linecap="round"
-        />
-        
-        <!-- Progress arc -->
-        <path
-          class="progress-arc"
-          [attr.d]="'M 20 100 A 60 60 0 0 1 ' + (20 + (percentage() / 100) * 120) + ' ' + (100 - 60 * Math.sin((percentage() / 100) * Math.PI))"
-          fill="none"
-          [attr.stroke]="statusColor()"
-          stroke-width="12"
-          stroke-linecap="round"
-          [style.transition]="'stroke-dasharray 0.5s ease-in-out'"
-        />
-      </svg>
-      
-      <div class="gauge-value">
-        <span class="value">{{ percentage() | number:'1.0-0' }}%</span>
-      </div>
+    <div class="main-value">
+      <span class="value-number">{{ kpi.value | number:'1.0-1' }}</span>
+      <span class="value-unit">{{ kpi.unit }}</span>
     </div>
     
-    <div class="kpi-details">
-      <div class="main-value">
-        <span class="value-number">{{ kpi.value | number:'1.1-2' }}</span>
-        <span class="value-unit">{{ kpi.unit }}</span>
-      </div>
-      
-      <div class="trend-info">
-        <span class="trend-direction">
-          {{ trendIcon }}
-        </span>
-        <span class="trend-text">
-          {{ trendText }}
-        </span>
-      </div>
+    <div class="trend-info" [class.trend-up]="kpi.trend.direction === 'up'" 
+         [class.trend-down]="kpi.trend.direction === 'down'">
+      <span class="trend-icon">{{ getTrendIcon() }}</span>
+      <span class="trend-percentage">{{ kpi.trend.percentage | number:'1.2-2' }}%</span>
+      <span class="trend-period">{{ kpi.trend.period }}</span>
     </div>
-  </div>
-  
-  <div class="kpi-footer">
-    <span class="last-updated">Last updated: {{ kpi.lastUpdated | date:'MMM d, yyyy' }}</span>
   </div>
 </div>
 

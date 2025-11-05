@@ -1,55 +1,137 @@
 .health-charts-container {
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  
+  @media (max-width: 1200px) {
+    grid-template-columns: 1fr;
+  }
 }
 
 .chart-card {
   background: white;
   border-radius: 12px;
-  padding: 24px;
+  padding: 16px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+  
+  &.dark-theme {
+    background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+    color: white;
+    box-shadow: 0 4px 12px rgba(30, 60, 114, 0.3);
+  }
+  
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+  }
 }
 
 .chart-header {
-  margin-bottom: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 12px;
+}
+
+.chart-title-section {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
 }
 
 .chart-title {
-  font-size: 14px;
+  font-size: 11px;
   font-weight: 700;
-  color: #1a1a1a;
   margin: 0;
   text-transform: uppercase;
-  letter-spacing: 0.5px;
+  letter-spacing: 1px;
+  
+  .dark-theme & {
+    color: rgba(255, 255, 255, 0.7);
+  }
+  
+  .chart-card:not(.dark-theme) & {
+    color: #8898aa;
+  }
+}
+
+.chart-subtitle {
+  font-size: 14px;
+  font-weight: 700;
+  margin: 0;
+  
+  .dark-theme & {
+    color: white;
+  }
+  
+  .chart-card:not(.dark-theme) & {
+    color: #1a1a1a;
+  }
+}
+
+.chart-controls {
+  display: flex;
+  gap: 8px;
+}
+
+.time-btn {
+  padding: 6px 12px;
+  border: none;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 11px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  
+  &:hover {
+    background: rgba(255, 255, 255, 0.15);
+    color: white;
+  }
+  
+  &.active {
+    background: rgba(255, 255, 255, 0.25);
+    color: white;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  }
 }
 
 .chart-loading {
   text-align: center;
-  padding: 40px;
-  color: #666;
+  padding: 60px 20px;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 14px;
 }
 
 .chart-content {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 16px;
 }
 
 .chart-area {
   width: 100%;
-  min-height: 200px;
-  background: #f9f9f9;
+  height: 180px;
+  background: rgba(255, 255, 255, 0.05);
   border-radius: 8px;
   display: flex;
   align-items: center;
   justify-content: center;
+  backdrop-filter: blur(10px);
+  position: relative;
+  
+  canvas {
+    max-height: 100%;
+  }
 }
 
 .chart-legend {
   display: flex;
   gap: 20px;
   justify-content: center;
+  padding-top: 8px;
 }
 
 .legend-item {
@@ -57,13 +139,18 @@
   align-items: center;
   gap: 8px;
   font-size: 14px;
-  color: #666;
+  color: rgba(255, 255, 255, 0.8);
 }
 
 .legend-color {
-  width: 16px;
-  height: 16px;
-  border-radius: 4px;
+  width: 12px;
+  height: 12px;
+  border-radius: 3px;
+  flex-shrink: 0;
+}
+
+.legend-text {
+  font-weight: 500;
 }
 
 .parameters-grid {
@@ -79,30 +166,35 @@
 }
 
 .parameter-label {
-  font-size: 14px;
-  font-weight: 600;
-  color: #666;
+  font-size: 12px;
+  font-weight: 700;
+  color: #8898aa;
   min-width: 100px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 
 .parameter-bar {
   flex: 1;
-  height: 24px;
-  background: #e0e0e0;
-  border-radius: 12px;
+  height: 28px;
+  background: #e9ecef;
+  border-radius: 14px;
   overflow: hidden;
   position: relative;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.05);
 }
 
 .parameter-fill {
   height: 100%;
-  transition: width 0.3s ease;
-  border-radius: 12px;
+  transition: width 0.5s ease;
+  border-radius: 14px;
+  background: linear-gradient(90deg, #00A0DD 0%, #4FC3F7 100%) !important;
+  box-shadow: 0 2px 8px rgba(0, 160, 221, 0.3);
 }
 
 .parameter-value {
   font-size: 16px;
-  font-weight: 600;
+  font-weight: 700;
   color: #1a1a1a;
   min-width: 60px;
   text-align: right;
@@ -117,19 +209,28 @@
 .reading-item {
   display: flex;
   justify-content: space-between;
-  padding: 12px;
-  background: #f9f9f9;
-  border-radius: 8px;
+  align-items: center;
+  padding: 16px;
+  background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+  border-radius: 12px;
+  border: 1px solid #e9ecef;
+  transition: all 0.3s ease;
+  
+  &:hover {
+    background: linear-gradient(135deg, #f0f4f8 0%, #f8f9fa 100%);
+    transform: translateX(4px);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  }
 }
 
 .reading-label {
   font-size: 14px;
-  color: #666;
+  color: #8898aa;
   font-weight: 500;
 }
 
 .reading-value {
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 700;
   color: #1a1a1a;
 }
@@ -137,7 +238,7 @@
 .api-status {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 12px;
 }
 
 .status-indicator {
@@ -150,22 +251,48 @@
   width: 12px;
   height: 12px;
   border-radius: 50%;
+  position: relative;
   
   &.online {
     background: var(--status-normal);
-    box-shadow: 0 0 8px rgba(76, 175, 80, 0.5);
+    box-shadow: 0 0 12px rgba(76, 175, 80, 0.6);
+    
+    &::before {
+      content: '';
+      position: absolute;
+      top: -2px;
+      left: -2px;
+      right: -2px;
+      bottom: -2px;
+      border-radius: 50%;
+      border: 2px solid var(--status-normal);
+      opacity: 0.3;
+      animation: pulse 2s infinite;
+    }
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.3;
+  }
+  50% {
+    transform: scale(1.5);
+    opacity: 0;
   }
 }
 
 .status-text {
-  font-size: 16px;
+  font-size: 14px;
   font-weight: 700;
   color: var(--status-normal);
+  letter-spacing: 0.5px;
 }
 
 .status-update {
-  font-size: 14px;
-  color: #666;
+  font-size: 13px;
+  color: #8898aa;
   margin-left: 24px;
 }
 

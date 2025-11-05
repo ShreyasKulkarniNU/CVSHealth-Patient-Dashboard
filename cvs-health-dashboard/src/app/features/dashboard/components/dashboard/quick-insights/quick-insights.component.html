@@ -1,12 +1,21 @@
 <div class="quick-insights-card">
   <div class="insights-header">
-    <h3 class="insights-title">QUICK INSIGHTS</h3>
+    <div class="insights-title-section">
+      <h3 class="insights-title">QUICK INSIGHTS</h3>
+      <h4 class="insights-subtitle">Health Recommendations</h4>
+    </div>
+    <button class="see-all-btn">See all</button>
   </div>
   
   <div class="insights-content">
     <ul class="insights-list">
-      @for (insight of insights; track insight) {
-        <li class="insight-item">{{ insight }}</li>
+      @for (insight of insights; track $index) {
+        <li class="insight-item">
+          <div class="insight-icon">{{ getInsightIcon($index) }}</div>
+          <div class="insight-content">
+            <p class="insight-text">{{ insight }}</p>
+          </div>
+        </li>
       }
     </ul>
   </div>

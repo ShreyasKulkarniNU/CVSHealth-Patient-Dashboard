@@ -2,7 +2,7 @@
   <!-- Sidebar -->
   <aside class="sidebar">
     <div class="logo">
-      <span class="heart-icon">❤️</span>
+      <div class="logo-icon">❤️</div>
       <span class="logo-text">CVS Health</span>
     </div>
     
@@ -11,29 +11,53 @@
         <a [routerLink]="item.path" 
            routerLinkActive="active" 
            class="nav-item">
-          <span class="nav-icon">{{ item.label | slice:0:1 }}</span>
+          <span class="nav-icon">{{ getNavIcon(item.icon) }}</span>
           <span class="nav-label">{{ item.label }}</span>
         </a>
       }
     </nav>
+    
+    <div class="sidebar-footer">
+      <div class="doc-section">
+        <div class="doc-title">DOCUMENTATION</div>
+        <a href="#" class="doc-link">
+          <span class="doc-icon">🚀</span>
+          <span>Getting started</span>
+        </a>
+        <a href="#" class="doc-link">
+          <span class="doc-icon">⚙️</span>
+          <span>Foundation</span>
+        </a>
+        <a href="#" class="doc-link">
+          <span class="doc-icon">🧩</span>
+          <span>Components</span>
+        </a>
+      </div>
+    </div>
   </aside>
 
   <!-- Main Content -->
   <main class="main-content">
-    <!-- Header -->
+    <!-- Header with Gradient -->
     <header class="header">
       <div class="header-left">
-        <h1 class="page-title">CVS Health Patient Monitoring</h1>
+        <h1 class="page-title">DASHBOARD</h1>
       </div>
       <div class="header-right">
+        <div class="search-container">
+          <span class="search-icon">🔍</span>
+          <input type="text" class="search-input" placeholder="Search" />
+        </div>
         @if (selectedPatient()) {
           <div class="patient-info">
-            <span class="patient-name">{{ selectedPatient()?.firstName }} {{ selectedPatient()?.lastName }}</span>
+            <div class="patient-avatar">
+              {{ selectedPatient()?.firstName?.charAt(0) }}{{ selectedPatient()?.lastName?.charAt(0) }}
+            </div>
+            <div class="patient-details">
+              <span class="patient-name">{{ selectedPatient()?.firstName }} {{ selectedPatient()?.lastName }}</span>
+            </div>
           </div>
         }
-        <div class="user-menu" (click)="logout()">
-          <span class="user-icon">👤</span>
-        </div>
       </div>
     </header>
 

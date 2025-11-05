@@ -1,22 +1,31 @@
 <div class="health-charts-container">
   <!-- Bone Mineral Density Trend -->
-  <div class="chart-card">
+  <div class="chart-card dark-theme">
     <div class="chart-header">
-      <h3 class="chart-title">BONE MINERAL TREND (LAST 6 MONTHS)</h3>
+      <div class="chart-title-section">
+        <h3 class="chart-title">OVERVIEW</h3>
+        <h4 class="chart-subtitle">Bone Mineral Density</h4>
+      </div>
+      <div class="chart-controls">
+        <button class="time-btn" [class.active]="selectedTimeRange === 'month'" 
+                (click)="selectedTimeRange = 'month'">Month</button>
+        <button class="time-btn" [class.active]="selectedTimeRange === 'week'" 
+                (click)="selectedTimeRange = 'week'">Week</button>
+      </div>
     </div>
     @if (loading()) {
       <div class="chart-loading">Loading chart data...</div>
     } @else {
       <div class="chart-content">
         <div class="simple-chart">
-          <div class="chart-area" style="height: 200px;">
-            <canvas id="bmdChart" style="width: 100%; height: 100%;"></canvas>
+          <div class="chart-area">
+            <canvas #bmdChart></canvas>
           </div>
         </div>
         <div class="chart-legend">
           <span class="legend-item">
-            <span class="legend-color" style="background: #4CAF50;"></span>
-            T-Score Trend
+            <span class="legend-color" style="background: #9C27B0;"></span>
+            <span class="legend-text">T-Score Trend</span>
           </span>
         </div>
       </div>
@@ -24,23 +33,26 @@
   </div>
 
   <!-- Hemoglobin Variation -->
-  <div class="chart-card">
+  <div class="chart-card dark-theme">
     <div class="chart-header">
-      <h3 class="chart-title">HEMOGLOBIN VARIATION (M6/DL)</h3>
+      <div class="chart-title-section">
+        <h3 class="chart-title">PERFORMANCE</h3>
+        <h4 class="chart-subtitle">Hemoglobin Levels</h4>
+      </div>
     </div>
     @if (loading()) {
       <div class="chart-loading">Loading chart data...</div>
     } @else {
       <div class="chart-content">
         <div class="simple-chart">
-          <div class="chart-area" style="height: 200px;">
-            <canvas id="hemoglobinChart" style="width: 100%; height: 100%;"></canvas>
+          <div class="chart-area">
+            <canvas #hemoglobinChart></canvas>
           </div>
         </div>
         <div class="chart-legend">
           <span class="legend-item">
-            <span class="legend-color" style="background: #00A0DD;"></span>
-            Hemoglobin Levels
+            <span class="legend-color" style="background: #FF9800;"></span>
+            <span class="legend-text">Hemoglobin (mg/dL)</span>
           </span>
         </div>
       </div>

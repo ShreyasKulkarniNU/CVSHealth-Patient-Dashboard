@@ -1,22 +1,60 @@
 .quick-insights-card {
   background: white;
-  border-radius: 12px;
+  border-radius: 16px;
   padding: 24px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
   height: 100%;
+  transition: all 0.3s ease;
+  
+  &:hover {
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  }
 }
 
 .insights-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
   margin-bottom: 24px;
 }
 
+.insights-title-section {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
 .insights-title {
-  font-size: 14px;
+  font-size: 11px;
+  font-weight: 700;
+  color: #8898aa;
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.insights-subtitle {
+  font-size: 18px;
   font-weight: 700;
   color: #1a1a1a;
   margin: 0;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
+}
+
+.see-all-btn {
+  padding: 8px 16px;
+  border: none;
+  background: rgba(0, 160, 221, 0.1);
+  color: #00A0DD;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  
+  &:hover {
+    background: rgba(0, 160, 221, 0.2);
+    transform: translateY(-1px);
+  }
 }
 
 .insights-content {
@@ -28,26 +66,48 @@
   list-style: none;
   padding: 0;
   margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
 }
 
 .insight-item {
-  padding: 12px 0;
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 16px;
+  background: #f8f9fa;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+  
+  &:hover {
+    background: #f0f4f8;
+    transform: translateX(4px);
+  }
+}
+
+.insight-icon {
+  font-size: 24px;
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 160, 221, 0.1);
+  border-radius: 10px;
+}
+
+.insight-content {
+  flex: 1;
+}
+
+.insight-text {
   font-size: 14px;
-  color: #666;
-  border-bottom: 1px solid #e0e0e0;
-  
-  &:last-child {
-    border-bottom: none;
-  }
-  
-  &::before {
-    content: "•";
-    color: var(--cvs-blue);
-    font-weight: bold;
-    display: inline-block;
-    width: 1em;
-    margin-right: 8px;
-  }
+  color: #1a1a1a;
+  margin: 0;
+  line-height: 1.5;
+  font-weight: 500;
 }
 
 

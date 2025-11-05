@@ -14,6 +14,11 @@ export class QuickInsightsComponent {
     'Monitor Vitamin D',
     'Scheduled check-up: Nov 15'
   ];
+
+  getInsightIcon(index: number): string {
+    const icons = ['💊', '📊', '📅'];
+    return icons[index] || '💡';
+  }
 }
 
 

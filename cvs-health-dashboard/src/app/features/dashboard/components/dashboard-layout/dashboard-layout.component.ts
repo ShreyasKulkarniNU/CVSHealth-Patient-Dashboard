@@ -36,6 +36,16 @@ export class DashboardLayoutComponent implements OnInit {
     this.dashboardState.clearState();
     this.router.navigate(['/login']);
   }
+
+  getNavIcon(iconName: string): string {
+    const icons: { [key: string]: string } = {
+      'home': '📊',
+      'people': '👥',
+      'assessment': '📈',
+      'settings': '⚙️'
+    };
+    return icons[iconName] || '📄';
+  }
 }
 
 
